@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.crud-form {
+  height: 100vh;
+  border: 2px solid #f1f1f1;
+  padding: 16px;
+  background-color: white;
+  width: 30%;}
+input{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;}
+button[type=submit] {
+    background-color: #434140;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 20px;}
+button[type=submit]:hover {
+  background-color:#3d3c3c;}
+ 
+
+</style>
+</head>
+<body>
+<div><p>Version : <%= data[1] %></p></div>
+<div class="form-container" >
+<div class="crud-form">
+    <form action="add" method="POST" id="add_form">
+       <input type="text" placeholder="Full Name" name="full_name"  >
+            
+       <input type="email" placeholder="Email Address" name="email_address"  >
+            
+       <input type="city" placeholder=" City" name="city"  >
+            
+       <input type="text" placeholder="Country" name="country" >
+            <button formaction="add">Add</button>
+    </form>
+  
+         
+  </div>
+  <br />
+  <div class="crud-form">
+    <form action="update" method="PUT" id="update_form">
+      <input type="text" placeholder="Record id to update" name="id"  >
+
+       <input type="text" placeholder="Full Name" name="full_name_update"  >
+            
+       <input type="email" placeholder="Email Address" name="email_address_update"  >
+            
+       <input type="city" placeholder=" City" name="city_update"  >
+            
+       <input type="text" placeholder="Country" name="country_update" >
+            <button formaction="update">Update</button>
+    </form>
+  
+         
+  </div>
+<div class="crud-form">
+  <p>Name:Email:City:Country</p>
+  <ul>
+    <% if (data[0])
+    for(var i=0; i<data[0].length; i++) {%>
+       <li><%= data[0][i].id %> : <%= data[0][i].full_name %> : <%= data[0][i].email_address %> : <%= data[0][i].city %> : <%= data[0][i].country %></li>
+    <% } %>
+    </ul>
+</div>
+</div>
+
+</body>
+</html>
